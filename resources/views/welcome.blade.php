@@ -9,7 +9,7 @@
         @vite('resources/css/app.css')
     </head>
     <body class="antialiased">
-        <div class="flex">
+        <div class="flex flex-col">
             <h1 class="text-white bg-slate-900">Hello</h1>
             <h1 class="text-amber-800 bg-slate-500">World</h1>
             <h2 class="text-blue-800 bg-slate-500"></h2>
