@@ -14,5 +14,9 @@
             <h1 class="text-amber-800 bg-slate-500">World</h1>
             <h2 class="text-blue-800 bg-slate-500"></h2>
         </div>
+
+        <h1>
+            Hello
+        </h1>
     </body>
 </html>
