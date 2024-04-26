@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('forum_users', function (Blueprint $table) {
-            //
+            $table->id();
+            $table->foreignId('form_id')->constrained('forums');
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('level')->default('member');
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('forum_users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('forum_users');
     }
 };
