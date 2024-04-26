@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('forums', function (Blueprint $table) {
+        Schema::create('forums', function (Blueprint $table) {
             $table->id();
             $table->string('title', 100);
             $table->text('desc')->nullable();

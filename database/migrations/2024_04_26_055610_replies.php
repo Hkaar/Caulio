@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('replies', function (Blueprint $table) {
+        Schema::create('replies', function (Blueprint $table) {
             $table->id();
             $table->foreignId('comment_id')->constrained('comments');
             $table->foreignId('user_id')->constrained('users');
