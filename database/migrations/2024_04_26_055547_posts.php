@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('form_id')->constrained('forums');
+            $table->foreignId('forum_id')->constrained('forums');
             $table->foreignId('user_id')->constrained('users');
             $table->string('title', 255);
             $table->text('content')->nullable();
+            $table->timestamps();
         });
     }
 
