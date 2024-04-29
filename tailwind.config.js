@@ -6,7 +6,20 @@ export default {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "primary": "#1B1A55",
+        "secondary": "#535C91",
+        "accent": "#9290C3",
+        "error": "#E61B37",
+        "warning": "#FFA500",
+        "success": "#267D48",
+        "info": "#1FA2E2"        
+      },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"]
+      }
+    },
   },
   plugins: [],
 }
