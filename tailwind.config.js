@@ -7,6 +7,10 @@ export default {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: "2rem",
+      },
       colors: {
         "primary": "#1B1A55",
         "secondary": "#535C91",
