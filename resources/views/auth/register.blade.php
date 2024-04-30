@@ -8,7 +8,7 @@
     <form action="{{ route('auth.register') }}" method="post" class="p-6 md:p-12 shadow-md md:border bg-white rounded-md">
       @csrf
   
-      <h1 class="font-bold text-4xl mb-5">
+      <h1 class="font-bold text-4xl mb-8">
         Caulio
       </h1>
 
@@ -66,7 +66,9 @@
           Register
         </button>
   
-        <a class="inline-block text-blue-500 underline" href="">Already have an account?</a>
+        <a class="inline-block text-blue-500 underline" href="{{ route('auth.login.show') }}">
+          Already have an account?
+        </a>
       </div>
     </form>
   </div>

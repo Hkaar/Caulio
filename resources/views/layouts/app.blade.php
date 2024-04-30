@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>@yield('title')</title>
 
-  <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
   @vite('resources/css/app.css')
 </head>
 <body>
@@ -15,6 +14,5 @@
   </main>
 
   @yield('extra')
-  <script src="{{ URL::asset('js/app.js') }}"></script>
 </body>
 </html>
