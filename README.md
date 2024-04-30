@@ -142,7 +142,7 @@ git branch <your-feature>
 And then switch your branch to your newly created one
 
 ```bash
-git branch <your-branch>
+git checkout <your-branch>
 ```
 
 ### Step 3 : How to work
