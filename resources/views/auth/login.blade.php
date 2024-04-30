@@ -8,7 +8,7 @@
     <form action="{{ route('auth.login') }}" method="post" class="p-6 md:p-12 shadow-md md:border bg-white rounded-md">
       @csrf
   
-      <h1 class="font-bold text-4xl mb-5">
+      <h1 class="font-bold text-4xl mb-8">
         Caulio
       </h1>
   
@@ -30,6 +30,8 @@
           class="block w-[100%] p-2 border border-gray-400 focus:ring-4 focus:ring-blue-500 
           focus:outline-none rounded-md active:scale-95 transition-all delay-50"
         required>
+
+        <a class="inline-block text-blue-500" href="">Forgot your password?</a>
        
         @error('password')
           <span>{{ $message }}</span>
@@ -42,7 +44,9 @@
           Login
         </button>
   
-        <a class="inline-block text-blue-500 underline" href="">Forgot your password?</a>
+        <a class="inline-block text-blue-500 underline" href="{{ route('auth.register.show') }}">
+          Don't have an account?
+        </a>
       </div>
     </form>
   </div>
