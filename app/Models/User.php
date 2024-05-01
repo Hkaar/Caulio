@@ -19,8 +19,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'display_name',
         'email',
         'password',
+        'level',
     ];
 
     /**
@@ -42,6 +44,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Checks if the user is an admin
+     */
+    public function isAdmin()
+    {
+        return $this->level === "admin";
+    }
+
+    /**
+     * Checks if the user has the specified permission within a forum
+     */
+    public function hasPermission(int $forumId, string $role)
+    {
+        return ForumUser::where('user_id', $this->id)
+            ->where('forum_id', $forumId)
+            ->where('role', $role)
+            ->exists();
+    }
 
     /**
      * Define the relationship with the forums
