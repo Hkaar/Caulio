@@ -17,7 +17,7 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name("/");
 
 Route::prefix("/register")->group(function() {
     Route::get("/", [AuthController::class, "register"])->name("auth.register.show");

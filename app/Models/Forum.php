@@ -18,6 +18,7 @@ class Forum extends Model
 
     protected $fillable = [
         "title",
+        "img",
         "desc",
     ];
 

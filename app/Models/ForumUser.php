@@ -19,7 +19,7 @@ class ForumUser extends Model
     protected $fillable = [
         "forum_id",
         "user_id",
-        "level",
+        "role",
     ];
 
     /**
