@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('forums', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100);
+            $table->string('title', 100)->unique();
+            $table->string('img')->nullable();
             $table->text('desc')->nullable();
             $table->timestamps();
         });
