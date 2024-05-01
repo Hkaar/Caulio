@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('forum_id')->constrained('forums')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('level')->default('member');
+            $table->string('role')->default('member');
             $table->timestamps();
         });
     }
