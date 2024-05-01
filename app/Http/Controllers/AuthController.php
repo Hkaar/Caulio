@@ -32,7 +32,8 @@ class AuthController extends Controller
     public function store(Request $request)
     {
         $credentials = $request->validate([
-            "name" => "required|string|max:255",
+            "name" => "required|string|max:255|unique:users,name",
+            "display_name" => "required|string|max:255",
             "email" => "required|email|unique:users,email",
             "password" => "required|string|min:8|confirmed",
             "password_confirmation" => "required|string|min:8",
