@@ -41,7 +41,7 @@ class UserController extends Controller
             "email" => ["required", "email", "unique:users,email"],
             "password" => ["required", "string", "min:8", "confirm"],
             "password_confirmation" => ["required", "string"],
-            "level" => ["nullable", "string"],
+            "role" => ["nullable", "string"],
             "img" => ["nullable", "img", "mimes:jpeg,png,jpg", "max:10240"]
         ]);
 
@@ -100,7 +100,7 @@ class UserController extends Controller
             "email" => ["nullable", "email", "unique:users,email"],
             "password" => ["nullable", "string", "min:8", "confirm"],
             "password_confirmation" => ["nullable", "string"],
-            "level" => ["nullable", "string"],
+            "role" => ["nullable", "string"],
             "img" => ["nullable", "img", "mimes:jpeg,png,jpg", "max:10240"]
         ]);
 
