@@ -22,7 +22,7 @@ class User extends Authenticatable
         'display_name',
         'email',
         'password',
-        'level',
+        'role',
     ];
 
     /**
@@ -50,7 +50,7 @@ class User extends Authenticatable
      */
     public function isAdmin()
     {
-        return $this->level === "admin";
+        return $this->role === "admin";
     }
 
     /**
