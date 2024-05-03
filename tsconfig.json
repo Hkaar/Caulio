@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "ES2016",
+        "allowJs": true,
+        "checkJs": true,
+        "strict": true,
+        "outDir": "./dist"
+    },
+
+    "exclude": [
+        "./dist/*"
+    ]
+}

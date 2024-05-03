@@ -33,7 +33,6 @@ class AuthController extends Controller
     {
         $credentials = $request->validate([
             "name" => "required|string|max:255|unique:users,name",
-            "display_name" => "required|string|max:255",
             "email" => "required|email|unique:users,email",
             "password" => "required|string|min:8|confirmed",
             "password_confirmation" => "required|string|min:8",
@@ -42,6 +41,7 @@ class AuthController extends Controller
         $user = new User();
 
         $user->fill($credentials);
+        $user->display_name = $user->name;
         $user->password = Hash::make($credentials["password"]);
         $user->save();
 

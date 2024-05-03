@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
+use App\Models\Reply;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class ReplyController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $comments = Comment::paginate(20);
+        $replies = Reply::paginate(20);
 
-        return view("comments.index", [
-            "comments" => $comments,
+        return view("replies.index", [
+            "replies" => $replies,
         ]);
     }
 
@@ -24,7 +24,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        return view("comments.create");
+        return view("replies.create");
     }
 
     /**
@@ -33,16 +33,17 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "post_id" => ["required", "exists:posts,id"],
             "user_id" => ["required", "exists:users,id"],
+            "comment_id" => ["required", "exists:comments,id"],
             "content" => ["required", "string"],
         ]);
 
-        $comment = new Comment();
-        $comment->fill($validated);
-        $comment->save();
+        $reply = new Reply();
+        
+        $reply->fill($validated);
+        $reply->save();
 
-        return redirect()->route('comments.index');
+        return redirect()->route('replies.index');
     }
 
     /**
@@ -50,10 +51,10 @@ class CommentController extends Controller
      */
     public function show(int $id)
     {
-        $comment = Comment::findOrFail($id);
+        $reply = Reply::findOrFail($id);
 
-        return view("comments.show", [
-            "comment" => $comment,
+        return view("replies.show", [
+            "reply" => $reply,
         ]);
     }
 
@@ -62,10 +63,10 @@ class CommentController extends Controller
      */
     public function edit(int $id)
     {
-        $comment = Comment::findOrFail($id);
+        $reply = Reply::findOrFail($id);
 
-        return view("comments.edit", [
-            "comment" => $comment,
+        return view("replies.edit", [
+            "reply" => $reply,
         ]);
     }
 
@@ -74,18 +75,18 @@ class CommentController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $comment = Comment::findOrFail($id);
+        $reply = Reply::findOrFail($id);
 
         $validated = $request->validate([
-            "post_id" => ["nullable", "exists:posts,id"],
             "user_id" => ["nullable", "exists:users,id"],
+            "comment_id" => ["nullable", "exists:comments,id"],
             "content" => ["nullable", "string"],
         ]);
 
-        $comment->update($validated);
-        $comment->save();
-        
-        return redirect()->route('comments.index');
+        $reply->update($validated);
+        $reply->save();
+
+        return redirect()->route('replies.index');
     }
 
     /**
@@ -93,10 +94,8 @@ class CommentController extends Controller
      */
     public function destroy(int $id)
     {
-        $comment = Comment::findOrFail($id);
-
-        $comment->replies()->delete();
-        $comment->delete();
+        $reply = Reply::findOrFail($id);
+        $reply->delete();
 
         return response(null);
     }

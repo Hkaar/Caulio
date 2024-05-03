@@ -39,7 +39,7 @@ class UserController extends Controller
             "name" => ["required", "string", "max:255", "unique:users,name"],
             "display_name" => ["nullable", "string", "max:255"],
             "email" => ["required", "email", "unique:users,email"],
-            "password" => ["required", "string", "min:8", "confirm"],
+            "password" => ["required", "string", "min:8", "confirmed"],
             "password_confirmation" => ["required", "string"],
             "role" => ["nullable", "string"],
             "img" => ["nullable", "img", "mimes:jpeg,png,jpg", "max:10240"]
@@ -98,13 +98,13 @@ class UserController extends Controller
             "name" => ["nullable", "string", "max:255", "unique:users,name"],
             "display_name" => ["nullable", "string", "max:255"],
             "email" => ["nullable", "email", "unique:users,email"],
-            "password" => ["nullable", "string", "min:8", "confirm"],
+            "password" => ["nullable", "string", "min:8", "confirmed"],
             "password_confirmation" => ["nullable", "string"],
             "role" => ["nullable", "string"],
             "img" => ["nullable", "img", "mimes:jpeg,png,jpg", "max:10240"]
         ]);
 
-        $user->update($validated);
+        $this->updateModel($user, $validated, ["img"]);
 
         if ($request->hasFile('img')) {
             $img = $request->file("img");

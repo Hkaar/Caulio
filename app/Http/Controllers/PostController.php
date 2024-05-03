@@ -117,6 +117,8 @@ class PostController extends Controller
     public function destroy(int $id)
     {
         $post = Post::findOrFail($id);
+
+        $post->comments()->delete();
         $post->delete();
 
         return response(null);
