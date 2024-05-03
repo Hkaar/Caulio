@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -11,7 +12,11 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comment::paginate(20);
+
+        return view("comments.index", [
+            "comments" => $comments,
+        ]);
     }
 
     /**
@@ -19,7 +24,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        return view("comments.create");
     }
 
     /**
@@ -27,38 +32,72 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            "post_id" => ["required", "exists:posts,id"],
+            "user_id" => ["required", "exists:users,id"],
+            "content" => ["required", "string"],
+        ]);
+
+        $comment = new Comment();
+        $comment->fill($validated);
+        $comment->save();
+
+        return redirect()->route('comments.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+
+        return view("comments.show", [
+            "comment" => $comment,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+
+        return view("comments.edit", [
+            "comment" => $comment,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+
+        $validated = $request->validate([
+            "post_id" => ["nullable", "exists:posts,id"],
+            "user_id" => ["nullable", "exists:users,id"],
+            "content" => ["nullable", "string"],
+        ]);
+
+        $comment->update($validated);
+        $comment->save();
+        
+        return redirect()->route('comments.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+
+        $comment->replies()->delete();
+        $comment->delete();
+
+        return response(null);
     }
 }
