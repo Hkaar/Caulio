@@ -31,6 +31,14 @@ class Comment extends Model
     }
 
     /**
+     * Define the relationship with reply
+     */
+    public function replies()
+    {
+        return $this->hasMany(Reply::class, 'comment_id', 'id');
+    }
+
+    /**
      * Define the relationship with users
      */
     public function user()
