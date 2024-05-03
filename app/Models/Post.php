@@ -32,6 +32,14 @@ class Post extends Model
     }
 
     /**
+     * Define the relationship with posts
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'post_id', 'id');
+    }
+
+    /**
      * Define the relationship with the users
      */
     public function user()
