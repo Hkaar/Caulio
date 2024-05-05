@@ -22,7 +22,7 @@ export default {
             "light",
             "dark",
             "cupcake",
-            "forest",
+            "business",
         ],
     },
 };
