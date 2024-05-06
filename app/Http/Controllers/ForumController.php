@@ -35,7 +35,7 @@ class ForumController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "title" => ["required", "string", "max:100"],
+            "title" => ["required", "string", "max:100", "unique:forums,title"],
             "img" => ["nullable", "image", "mimes:jpg,jpeg,png", "max:10240"],
             "desc" => ["nullable", "string"],
         ]);
@@ -89,7 +89,7 @@ class ForumController extends Controller
         $forum = Forum::findOrFail($id);
 
         $validated = $request->validate([
-            "title" => ["required", "string", "max:100"],
+            "title" => ["nullable", "string", "max:100", "unique:forums,title"],
             "img" => ["nullable", "image", "mimes:jpg,jpeg,png", "max:10240"],
             "desc" => ["nullable", "string"],
         ]);
