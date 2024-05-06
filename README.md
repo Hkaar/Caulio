@@ -1,7 +1,7 @@
 # Caulio
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-![Workflow Status](https://github.com/Hkaar/7Books/workflows/ci.yaml/badge.svg)
+![Workflow Status](https://github.com/Hkaar/Caulio/workflows/ci/badge.svg)
 
 A web-based forum website created using Vue.js and Laravel
 
