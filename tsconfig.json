@@ -8,6 +8,7 @@
     },
 
     "exclude": [
-        "./dist/*"
+        "./dist/*",
+        "./tailwind.config.js"
     ]
 }
