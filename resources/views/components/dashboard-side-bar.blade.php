@@ -16,26 +16,26 @@ duration-300 ease-in-out z-10 py-4 px-6 w-full sm:w-64 md:max-w-20">
     </div>
 
     <div class="flex flex-col gap-3">
-      <div class="flex gap-2">
+      <a href="{{ route('users.index') }}" class="flex gap-2 hover:scale-110 hover:text-gray-400 active:scale-90 active:text-gray-800 duration-200 ease-in-out transition-all">
         <i class="fa-solid fa-chart-line text-xl"></i>
-        <a href="{{ route('users.index') }}" class="menu-text hidden">Users</a>
-      </div>
-      <div class="flex gap-2">
+        <span class="menu-text hidden">Users</span>
+      </a>
+      <a href="{{ route('forums.index') }}" class="flex gap-2 hover:scale-110 hover:text-gray-400 active:scale-90 active:text-gray-800 duration-200 ease-in-out transition-all">
         <i class="fa-solid fa-newspaper text-xl"></i>
-        <a href="{{ route('forums.index') }}" class="menu-text hidden">Forums</a>
-      </div>
-      <div class="flex gap-2">
+        <span class="menu-text hidden">Forums</span>
+      </a>
+      <a href="{{ route('posts.index') }}" class="flex gap-2 hover:scale-110 hover:text-gray-400 active:scale-90 active:text-gray-800 duration-200 ease-in-out transition-all">
         <i class="fa-solid fa-scroll text-xl"></i>
-        <a href="{{ route('posts.index') }}" class="menu-text hidden">Posts</a>
-      </div>
-      <div class="flex gap-2">
+        <span class="menu-text hidden">Posts</span>
+      </a>
+      <a href="{{ route('comments.index') }}" class="flex gap-2 hover:scale-110 hover:text-gray-400 active:scale-90 active:text-gray-800 duration-200 ease-in-out transition-all">
         <i class="fa-solid fa-comment text-xl"></i>
-        <a href="{{ route('comments.index') }}" class="menu-text hidden">Comment</a>
-      </div>
-      <div class="flex gap-2">
+        <span class="menu-text hidden">Comment</span>
+      </a>
+      <a href="{{ route('reply.index') }}" class="flex gap-2 hover:scale-110 hover:text-gray-400 active:scale-90 active:text-gray-800 duration-200 ease-in-out transition-all">
         <i class="fa-solid fa-comments text-xl"></i>
-        <a href="{{ route('reply.index') }}" class="menu-text hidden">Replies</a>
-      </div>
+        <span class="menu-text hidden">Replies</span>
+      </a>
     </div>
   </div>
 
