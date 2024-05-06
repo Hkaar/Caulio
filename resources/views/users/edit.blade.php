@@ -107,7 +107,7 @@
     
         <div>
           <a href="{{ route('users.index') }}" class="btn btn-danger">Cancel</a>
-          <button type="submit" class="btn btn-primary">Create</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
         </div>
       </form>
     </div>

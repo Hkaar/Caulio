@@ -21,7 +21,7 @@
         </a>
       </div>
 
-      <table class="table table-zebra table-lg">
+      <table class="table table-zebra table-lg max-w-full">
         <thead class="text-base">
           <th scope="col">ID</th>
           <th scope="col">Username</th>
