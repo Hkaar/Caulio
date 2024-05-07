@@ -33,8 +33,8 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "post_id" => ["required", "exists:posts,id"],
-            "user_id" => ["required", "exists:users,id"],
+            "post_id" => ["required", "number", "exists:posts,id"],
+            "user_id" => ["required", "number", "exists:users,id"],
             "content" => ["required", "string"],
         ]);
 
@@ -77,8 +77,8 @@ class CommentController extends Controller
         $comment = Comment::findOrFail($id);
 
         $validated = $request->validate([
-            "post_id" => ["nullable", "exists:posts,id"],
-            "user_id" => ["nullable", "exists:users,id"],
+            "post_id" => ["nullable", "number", "exists:posts,id"],
+            "user_id" => ["nullable", "number", "exists:users,id"],
             "content" => ["nullable", "string"],
         ]);
 
