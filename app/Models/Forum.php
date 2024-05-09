@@ -27,7 +27,7 @@ class Forum extends Model
      */
     public function users()
     {
-        return $this->hasMany(ForumUser::class, 'form_id', 'id');
+        return $this->hasMany(ForumUser::class, 'forum_id', 'id');
     }
 
     /**
@@ -35,6 +35,6 @@ class Forum extends Model
      */
     public function posts()
     {
-        return $this->hasMany(Post::class, 'form_id', 'id');
+        return $this->hasMany(Post::class, 'forum_id', 'id');
     }
 }

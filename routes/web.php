@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\UserController;
 
@@ -38,7 +39,7 @@ Route::get("/logout", [AuthController::class, "logout"])->name("logout");
 Route::prefix("/manage")->middleware("auth")->group(function() {
     Route::resource("/users", UserController::class)->names("users");
     Route::resource("/forums", ForumController::class)->names("forums");
-    Route::resource("/posts", ForumController::class)->names("posts");
+    Route::resource("/posts", PostController::class)->names("posts");
     Route::resource("/comments", CommentController::class)->names("comments");
     Route::resource("/replies", ReplyController::class)->names("reply");
 });

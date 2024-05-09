@@ -33,8 +33,8 @@ class ReplyController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "user_id" => ["required", "exists:users,id"],
-            "comment_id" => ["required", "exists:comments,id"],
+            "user_id" => ["required", "number", "exists:users,id"],
+            "comment_id" => ["required", "number", "exists:comments,id"],
             "content" => ["required", "string"],
         ]);
 
@@ -78,8 +78,8 @@ class ReplyController extends Controller
         $reply = Reply::findOrFail($id);
 
         $validated = $request->validate([
-            "user_id" => ["nullable", "exists:users,id"],
-            "comment_id" => ["nullable", "exists:comments,id"],
+            "user_id" => ["nullable", "number", "exists:users,id"],
+            "comment_id" => ["nullable", "number", "exists:comments,id"],
             "content" => ["nullable", "string"],
         ]);
 
