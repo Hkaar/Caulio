@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reply;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class ReplyController extends Controller
@@ -33,17 +35,20 @@ class ReplyController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "user_id" => ["required", "number", "exists:users,id"],
-            "comment_id" => ["required", "number", "exists:comments,id"],
+            "user" => ["required", "string", "exists:users,name"],
+            "comment_id" => ["required", "numeric", "exists:comments,id"],
             "content" => ["required", "string"],
         ]);
+
+        $userId = User::where("name", $validated["user"])->first()->id;
 
         $reply = new Reply();
         
         $reply->fill($validated);
+        $reply->user_id = $userId;
         $reply->save();
 
-        return redirect()->route('replies.index');
+        return redirect()->route('reply.index');
     }
 
     /**
@@ -78,15 +83,20 @@ class ReplyController extends Controller
         $reply = Reply::findOrFail($id);
 
         $validated = $request->validate([
-            "user_id" => ["nullable", "number", "exists:users,id"],
-            "comment_id" => ["nullable", "number", "exists:comments,id"],
+            "user" => ["nullable", "string", "exists:users,name"],
+            "comment_id" => ["nullable", "numeric", "exists:comments,id"],
             "content" => ["nullable", "string"],
         ]);
 
-        $reply->update($validated);
+        if ($validated["user"]) {
+            $userId = User::where("name", $validated["user"])->first()->id;
+            $reply->user_id = $userId;
+        }
+
+        $this->updateModel($reply, $validated, ["user"]);
         $reply->save();
 
-        return redirect()->route('replies.index');
+        return redirect()->route('reply.index');
     }
 
     /**
