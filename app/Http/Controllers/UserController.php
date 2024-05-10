@@ -42,7 +42,7 @@ class UserController extends Controller
             "password" => ["required", "string", "min:8", "confirmed"],
             "password_confirmation" => ["required", "string"],
             "role" => ["nullable", "string"],
-            "img" => ["nullable", "img", "mimes:jpeg,png,jpg", "max:10240"]
+            "img" => ["nullable", "image", "mimes:jpeg,png,jpg", "max:10240"],
         ]);
 
         $user = new User();
@@ -101,7 +101,7 @@ class UserController extends Controller
             "password" => ["nullable", "string", "min:8", "confirmed"],
             "password_confirmation" => ["nullable", "string"],
             "role" => ["nullable", "string"],
-            "img" => ["nullable", "img", "mimes:jpeg,png,jpg", "max:10240"]
+            "img" => ["nullable", "image", "mimes:jpeg,png,jpg", "max:10240"],
         ]);
 
         $this->updateModel($user, $validated, ["img"]);
