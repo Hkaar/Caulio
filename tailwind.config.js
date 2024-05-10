@@ -14,15 +14,29 @@ export default {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
+      animation: {
+        sink: "sink 1s infinite ease-in-out",
+      },
+      keyframes: {
+        sink: {
+          "0%": {
+            "transform": "translateY(-10px)"
+          },
+          "50%": {
+            "transform": "translateY(0)"
+          },
+          "100%": {
+            "transform": "translateY(-10px)"
+          }
+        }
+      },
     },
   },
   plugins: [require("daisyui")],
   daisyui: {
     themes: [
-      "light",
-      "dark",
-      "cupcake",
       "business",
+      "corporate",
     ],
   },
 };

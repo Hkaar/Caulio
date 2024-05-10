@@ -36,7 +36,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "forum" => ["required", "string", "max:100", "exists:forms,title"],
+            "forum" => ["required", "string", "max:100", "exists:forums,title"],
             "user" => ["required", "string", "exists:users,name"],
             "title" => ["required", "string", "max:255"],
             "content" => ["nullable", "string"],
@@ -88,7 +88,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         
         $validated = $request->validate([
-            "forum" => ["nullable", "string", "max:100", "exists:forms,title"],
+            "forum" => ["nullable", "string", "max:100", "exists:forums,title"],
             "user" => ["nullable", "string", "exists:users,name"],
             "title" => ["nullable", "string", "max:255"],
             "content" => ["nullable", "string"],

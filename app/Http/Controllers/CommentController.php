@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -33,13 +35,17 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "post_id" => ["required", "number", "exists:posts,id"],
-            "user_id" => ["required", "number", "exists:users,id"],
+            "post_id" => ["required", "numeric", "exists:posts,id"],
+            "user" => ["required", "string", "exists:users,name"],
             "content" => ["required", "string"],
         ]);
 
+        $userId = User::where("name", $validated["user"])->first()->id;
+
         $comment = new Comment();
         $comment->fill($validated);
+        $comment->user_id = $userId;
+
         $comment->save();
 
         return redirect()->route('comments.index');
@@ -77,12 +83,17 @@ class CommentController extends Controller
         $comment = Comment::findOrFail($id);
 
         $validated = $request->validate([
-            "post_id" => ["nullable", "number", "exists:posts,id"],
-            "user_id" => ["nullable", "number", "exists:users,id"],
+            "post_id" => ["nullable", "numeric", "exists:posts,id"],
+            "user" => ["nullable", "string", "exists:users,name"],
             "content" => ["nullable", "string"],
         ]);
 
-        $comment->update($validated);
+        if ($validated["user"]) {
+            $userId = User::where("name", $validated["user"])->first()->id;
+            $comment->user_id = $userId;
+        }
+
+        $this->updateModel($comment, $validated, ["user"]);
         $comment->save();
         
         return redirect()->route('comments.index');
