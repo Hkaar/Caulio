@@ -10,9 +10,11 @@
     <x-dashboard-navigation></x-dashboard-navigation>
 
     <div class="flex flex-col md:flex-row py-4 items-center justify-center gap-6 h-full px-32">
-      <div id="preview" class="flex-1"></div>
+      <div id="preview" class="flex-1 flex items-center justify-center">
+        <span class="size-36 md:size-72 rounded-full object-cover">Profile image will appear here</span>
+      </div>
 
-      <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data" class="w-fit">
+      <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data" class="flex-1">
         @csrf
 
         <div class="mb-4">

@@ -43,3 +43,5 @@ Route::prefix("/manage")->middleware("auth")->group(function() {
     Route::resource("/comments", CommentController::class)->names("comments");
     Route::resource("/replies", ReplyController::class)->names("reply");
 });
+
+Route::redirect("/manage", "/manage/users");

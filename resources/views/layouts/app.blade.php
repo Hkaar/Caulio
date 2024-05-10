@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="corporate" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
   @vite('resources/css/app.css')
 </head>
 <body>
-  <main class="flex flex-col h-screen">
+  <main class="flex flex-col min-h-screen">
     @yield('content')
   </main>
 

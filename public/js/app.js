@@ -29,5 +29,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
     sideBarToggles.forEach((e) => {
         e.addEventListener("click", toggleSideBar);
-    })
+    });
+
+    document.addEventListener("change", (event) => {
+        // @ts-ignore
+        if (event.target && event.target.id === "img") {
+            // @ts-ignore
+            let file = event.target.files[0];
+            let preview = document.getElementById('preview');
+    
+            if (file) {
+                let reader = new FileReader();
+    
+                reader.onload = (e) => {
+                    // @ts-ignore
+                    let result = e.target.result;
+    
+                    if (file.type.startsWith('image') && result) {
+                        let img = document.createElement('img');
+                        // @ts-ignore
+                        img.src = result;
+                        img.className = 'size-36 md:size-72 rounded-full object-cover';
+                        // @ts-ignore
+                        preview.innerHTML = '';
+                        // @ts-ignore
+                        preview.appendChild(img);
+                    } else {
+                        // @ts-ignore
+                        preview.innerHTML = 'Image not available';
+                    }
+                };
+    
+                reader.readAsDataURL(file);
+            } else {
+                // @ts-ignore
+                preview.innerHTML = '';
+            }
+        }
+    });    
 })
