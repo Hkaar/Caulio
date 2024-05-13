@@ -21,6 +21,10 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
+    if (auth()->check()) {
+        return view('home');
+    }
+
     return view('welcome');
 })->name("/");
 
@@ -37,6 +41,8 @@ Route::prefix("/login")->group(function() {
 Route::get("/logout", [AuthController::class, "logout"])->name("logout");
 
 Route::prefix("/manage")->middleware("auth")->group(function() {
+    Route::get("/posts", [PostController::class, "posts"])->name("posts.all");
+
     Route::resource("/users", UserController::class)->names("users");
     Route::resource("/forums", ForumController::class)->names("forums");
     Route::resource("/posts", PostController::class)->names("posts");
