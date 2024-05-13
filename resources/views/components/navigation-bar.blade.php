@@ -1,10 +1,14 @@
 <div class="flex h-16 w-full justify-between px-4 py-2 border-b border-gray-400 items-center">
-  <div id="brand" class="flex items-center gap-3">
+  <div id="brand" class="items-center gap-3 hidden md:flex">
     <img src="{{ URL::asset('assets/imgs/caulio.png') }}" alt="Not available" srcset="" class="size-12 object-cover">
     <h1 class="text-3xl font-bold">
       Caulio
     </h1>
   </div>
+
+  <button class="sideBarToggle outline-none text-xl active:scale-90 delay-100 transition-all hover:scale-110 hover:text-gray-500 md:hidden">
+    <i class="fa-solid fa-bars"></i>
+  </button>
 
   <div class="flex items-center gap-3 text-xl">
     <div class="flex items-center gap-1 text-xl">
