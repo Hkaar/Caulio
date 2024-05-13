@@ -3,7 +3,7 @@
 @section('title', "Login")
 
 @section('content')
-<div class="bg-gradient-to-br from-primary to-white h-screen w-screen flex">
+<div class="h-screen w-screen flex">
   <div class="container flex flex-1 flex-col justify-center items-center">
     <form action="{{ route('login') }}" method="post" class="p-6 md:p-12 shadow-md md:border bg-white rounded-md">
       @csrf
