@@ -22,6 +22,15 @@ class PostController extends Controller
         ]);
     }
 
+    public function all()
+    {
+        $posts = Post::paginate(20);
+
+        return view("posts.all", [
+            "posts" => $posts,
+        ]);
+    }
+    
     /**
      * Show the form for creating a new resource.
      */
