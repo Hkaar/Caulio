@@ -15,7 +15,7 @@ export default {
         poppins: ["Poppins", "sans-serif"],
       },
       animation: {
-        sink: "sink 1s infinite ease-in-out",
+        sink: "sink 3s infinite ease-in-out",
       },
       keyframes: {
         sink: {
