@@ -5,7 +5,7 @@ function toggleSideBar() {
     const sideBar = document.getElementById("sideBar");
     const sideBarMenus = document.querySelectorAll(".menu-text");
 
-    if (sideBar?.classList.contains("-translate-x-full") && sideBar?.classList.contains("min-w-16")) {
+    if (sideBar?.classList.contains("-translate-x-full") || sideBar?.classList.contains("min-w-16")) {
         sideBar.classList.replace("-translate-x-full", "translate-x-0");
         sideBar.classList.replace("min-w-16", "min-w-80");
 
